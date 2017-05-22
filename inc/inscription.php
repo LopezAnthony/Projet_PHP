@@ -68,7 +68,6 @@
 
 
 //-------------------AFFICHAGE----------------------
-    echo $contenu; //affiche les messages du site
 
 
     ?>
