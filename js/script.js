@@ -1,8 +1,16 @@
 $(document).ready(function(){
 
-function openModal(){
-    $('a[href$="inscription"]').click(function(){
-        var modal = $(this).form()
+function openModal1(){
+    $('a[href$="inscription"]').click(function(evt){
+        evt.preventDefault()
+        var modal = $(this).removeClass(hidden)
+        $('.modal').text(modal)
+
+        $('.modal').fadeToggle()
+    })
+
+    $('.fa').click(function(){
+        $('.modal').fadeToggle()
     })
 }
 

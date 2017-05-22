@@ -73,7 +73,7 @@
 
     ?>
     <section class="modal">
-        <h3>Inscription</h3>
+        <h3>Inscription <i class="fa fa-times" aria-hidden="true"></i></h3>
             <form method="post" action="">
 
             <input type="text" id="pseudo" name="pseudo" placeholder="Votre pseudo" value="">
