@@ -14,7 +14,13 @@
                     <li><a href="">SalleA</a></li>
                     <li><a href="">Qui sommes nous</a></li>
                     <li><a href="">Contact</a></li>
-                    <li><a href="">(icone membre)Espace Membre</a></li>
+                    <li><a href=""><i class="fa fa-user" aria-hidden="true"></i>Espace Membre</a>
+                        <ul>
+                            <li><a href="">Inscription</a></li>
+                            <li><a href="">Connexion</a></li>
+                            <li><a href="">Profil</a></li>
+                        </ul>
+                    </li>
                 </ul>
             </nav>
         </header>
