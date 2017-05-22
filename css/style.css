@@ -1,0 +1,78 @@
+@import url('https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
+
+/*
+    Style Reset
+*/
+    *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        -webkit-box-sizing: border-box;
+    }
+    html{
+        font-size: 62.5%
+    }
+    body{
+        font-size: 1.5rem;
+    }
+    img{
+        max-width: 100%
+    }
+    a{
+        text-decoration: none;
+        color: grey;
+    }
+
+/*
+    Style Header
+*/
+
+    nav{
+        position: relative;
+        background-color: lightgray;
+        margin: 2rem;
+        padding: 1.5rem;
+    }
+    li:nth-child(4) ul li{
+        display: block;
+        display: none;
+    }
+    li{
+        display: inline-block;
+        margin-left: 1rem;
+    }
+    li:first-of-type{
+        font-weight: bold;
+    }
+    li:last-of-type{
+        position: absolute;
+        right: 0;
+        margin-right: 4rem;
+    }
+    .fa{
+        margin-right: .5rem;
+    }
+
+/*Style inscription*/
+
+input{
+    border-radius: .5rem;
+    padding: .2rem 0 .2rem .2rem;
+    margin-top: .5rem;
+}
+.modal input, .modal2 input{
+    display: block;
+}
+
+.modal [type="submit"], .modal2 [type="submit"]{
+    background-color: #0066ff;
+    border-radius: 2rem;
+    padding: .5rem;
+    color: white;
+    margin-top: .3rem;
+}
+
+input [type="radio"]{
+    display: inline-block;
+}
+
