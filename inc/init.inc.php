@@ -5,6 +5,9 @@
     //Initialisation session
     session_start();
 
+    //Chemin du site
+    define('RACINE_SITE', '/Projet_PHP/');
+
     //variable affichage.
     $contenu ='';
 
