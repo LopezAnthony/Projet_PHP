@@ -42,9 +42,9 @@
                     $resultat = $pdo->prepare("SELECT id_membre FROM membre WHERE pseudo = :pseudo"); //on vérifie l'existence du pseudo
                     $resultat->bindParam(':pseudo', $_POST['pseudo'], PDO::PARAM_STR);
 
-                    $req = $resultat->execute(); 
+                    $resultat->execute(); 
 
-                    if($req->rowCount() > 0){ //Si il y a des lignes dans le reultat de la requête
+                    if($resultat->rowCount() > 0){ //Si il y a des lignes dans le reultat de la requête
                         $contenu .= '<div>Le pseudo est indisponible : veuillez en choisir un autre</div>';
                     } else{
                         //si le pseudo est unique, on peut faire l'inscription en BDD:
