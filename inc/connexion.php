@@ -54,7 +54,7 @@ require_once('inc/init.inc.php');
 //---------------------------AFFICHAGE-----------------------------
 
     ?>
-    <section class="modal2 ">
+    <section class="modal2 hidden">
         <h3>Connexion</h3>
         <form method="post" action="">
 
