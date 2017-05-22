@@ -6,7 +6,7 @@ require_once('inc/init.inc.php');
         //Déconnexion demandée par l'internaute :
     if(isset($_GET['action']) && $_GET['action'] == 'deconnexion'){
         //si l'internaute demande la déconnexion, on détruit la session :
-        session_destroy();
+        unset($_SESSION['membre']);
     }
 
     //Traitement du formulaire de connexion, et remplissage de la session:

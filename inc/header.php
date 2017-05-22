@@ -18,9 +18,24 @@
                     <li><a href="">Contact</a></li>
                     <li><a href=""><i class="fa fa-user" aria-hidden="true"></i>Espace Membre</a>
                         <ul>
+                            <?php if(!userConnected()) : ?>
+                            
                             <li><a href="#" id="inscription">Inscription</a></li>
                             <li><a href="" id="connexion">Connexion</a></li>
+                            
+                            <?php else : ?>
+                            
+                            <li><a href="?action=deconnexion">Deconnexion</a></li>
                             <li><a href="">Profil</a></li>
+
+                            <?php endif ?>
+
+                            <?php if(adminConnected()) : ?>
+
+                            <li><a href="">Lien 1 backoffice</a></li>
+                            <li><a href="">Lien 2 backoffice</a></li>
+
+                            <?php endif; ?>
                         </ul>
                     </li>
                 </ul>
