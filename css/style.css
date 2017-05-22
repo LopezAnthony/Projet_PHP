@@ -29,7 +29,7 @@
 
     nav{
         position: relative;
-        background-color: white;
+        background-color: lightgray;
         margin: 2rem;
         padding: 1.5rem;
     }
@@ -70,14 +70,45 @@
     margin-top: 1rem;
 }
 
-input [type="radio"]{
-    display: inline-block;
-}
-
 .fa{
     cursor: pointer;
+    top: 0;
+    right: 0;
+    position: absolute;
 }
 .hidden{
     display: none;
+}
+
+.modal, .modal2{
+    position: fixed;
+    z-index: 2000;
+    top: 0;
+    left: 0;
+    background: rgba(0, 0, 0, .7);
+    width: 100%;
+    height: 100%;
+
+/*Pour l'animation*/
+display: none;
+
+}
+
+.modal article, .modal2 article{
+    background: white;
+    max-width: 35rem;
+    margin: 5rem auto;
+    padding: 2rem;
+    text-align: left;
+    border-radius: .4rem;
+}
+
+form input, form label{
+    margin-left: 5rem;
+}
+
+.modal h3, .modal2 h3{
+    text-align: center;
+    position: relative;
 }
 
