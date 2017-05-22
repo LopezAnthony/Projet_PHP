@@ -61,37 +61,37 @@
 
             <input type="hidden" id="id_produit" name="id_produit" value="">
 
-            <label for="titre">Titre</label>
+            <label for="titre">Titre :</label>
             <input type="text" id="titre" name="titre" placeholder="Titre de la salle" value="">
 
-            <label for="description">description</label>
-            <textarea name="description" id="descruotion" placeholder="Description de la salee"></textarea>
-
-            <label for="photo">Photo</label>
+            <label for="description">Description :</label><br>
+            <textarea name="description" id="description" placeholder="Description de la salee"></textarea>
+            
+            <label for="photo">Photo :</label><br>
             <input type="file" id="photo" name="photo">
 
-            <label for="capacite">Capacite</label>
+            <label for="capacite">Capacité :</label>
             <select name="capacite" id="capacite">
                 <?php for ($i = 0; $i < 31; $i++) { 
                     echo '<option value="'. $i .'">'. $i .'</option>';
                 } ?>
             </select>
 
-            <label for="categorie">categorie</label>
+            <label for="categorie">Catégorie :</label>
             <select name="categorie" id="categorie">
                 <?php foreach($categorie as $indice){
                     echo '<option value="'. $categorie .'">'. $indice .'</option>';
                 } ?>
             </select>
 
-            <label for="pays">Pays</label>
+            <label for="pays">Pays :</label>
             <input type="text" id="pays" name="pays" placeholder="France">
 
-            <label for="ville">Ville</label>
+            <label for="ville">Ville :</label>
             <input type="text" id="ville" name="ville" placeholder="Paris">
 
-            <label for="adresse">Adresse</label>
-            <input type="text" id="adresse" name="adresse" placeholder="adresse de la salle">
+            <label for="adresse">Adresse :</label>
+            <input type="text" id="adresse" name="adresse" placeholder="Adresse de la salle">
 
             <label for="cp">Code Postal</label>
             <input type="text" id="cp" name="cp" placeholder="Code Postal de la salle">
