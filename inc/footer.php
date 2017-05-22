@@ -1,6 +1,6 @@
         </main>
         <footer>
-            Copyright &copy Sallea 201
+            <p>Copyright &copy SalleA 201</p>
         </footer>
 
         <script
