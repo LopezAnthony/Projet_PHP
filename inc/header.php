@@ -32,8 +32,12 @@
 
                             <?php if(adminConnected()) : ?>
 
-                            <li><a href="">Lien 1 backoffice</a></li>
-                            <li><a href="">Lien 2 backoffice</a></li>
+                            <li><a href="">Gestion des salles</a></li>
+                            <li><a href="">Gestion des produits</a></li>
+                            <li><a href="">Gestion des membres</a></li>
+                            <li><a href="">Gestion des avis</a></li>
+                            <li><a href="">Gestion des commandes</a></li>
+                            <li><a href="">Statistiques</a></li>
 
                             <?php endif; ?>
                         </ul>
