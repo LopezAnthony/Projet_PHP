@@ -57,28 +57,30 @@
 
 
     ?>
-    <h3>Veuillez renseigner le formulaire pour vous inscrire</h3>
-        <form method="post" action="">
+    <section class="modal">
+        <h3>Veuillez renseigner le formulaire pour vous inscrire</h3>
+            <form method="post" action="">
 
-            <label for="pseudo">Pseudo :</label>
-            <input type="text" id="pseudo" name="pseudo" value="">
+                <label for="pseudo">Pseudo :</label>
+                <input type="text" id="pseudo" name="pseudo" value="">
 
-            <label for="mdp">Mot de passe :</label>
-            <input type="password" id="mdp" name="mdp" value="">
+                <label for="mdp">Mot de passe :</label>
+                <input type="password" id="mdp" name="mdp" value="">
 
-            <label for="nom">Nom :</label>
-            <input type="text" id="nom" name="nom" value="">
+                <label for="nom">Nom :</label>
+                <input type="text" id="nom" name="nom" value="">
 
-            <label for="prenom">Prenom :</label>
-            <input type="text" id="prenom" name="prenom" value="">
+                <label for="prenom">Prenom :</label>
+                <input type="text" id="prenom" name="prenom" value="">
 
-            <label for="email">Email :</label>
-            <input type="text" id="email" name="email" value="">
+                <label for="email">Email :</label>
+                <input type="text" id="email" name="email" value="">
 
-            <label for="civilite">Civilité :</label>
-            <input type="radio" name="civilite" id="homme" value="m" checked><label for="homme">Homme</label>
-            <input type="radio" name="civilite" id="femme" value="f" ><label for="femme">Femme</label>
+                <label for="civilite">Civilité :</label>
+                <input type="radio" name="civilite" id="homme" value="m" checked><label for="homme">Homme</label>
+                <input type="radio" name="civilite" id="femme" value="f" ><label for="femme">Femme</label>
 
-            <input type="submit" name="inscription" value="s'inscrire">
+                <input type="submit" name="inscription" value="s'inscrire">
 
-        </form>
+            </form>
+        </section>
