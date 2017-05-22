@@ -72,7 +72,7 @@
 
 
     ?>
-    <section class="modal">
+    <section class="modal hidden">
         <h3>Inscription</h3>
             <form method="post" action="">
 
