@@ -11,6 +11,8 @@
         <header>
             <nav>
                 <ul>
+                    <?php require_once('inc/inscription.php'); ?>
+                    <?php require_once('inc/connexion.php'); ?>
                     <li><a href="">SalleA</a></li>
                     <li><a href="">Qui sommes nous</a></li>
                     <li><a href="">Contact</a></li>

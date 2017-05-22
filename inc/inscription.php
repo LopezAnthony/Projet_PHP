@@ -6,40 +6,45 @@
         $inscription = false; //variable qui permet de savoir si le membre est inscrit, pour ne pas réafficher le formulaire d'inscription
 
         //Traitement du POST:
-            if(!empty($_POST)){ //si le formulaire est posté
+            if(isset($_POST['inscription'])){ //si le formulaire est posté
 
                 //validation du formulaire :
                 if(strlen($_POST['pseudo']) < 2 || strlen($_POST['pseudo']) > 20){
-                    $contenu .= '<div class="bg-danger">Le pseudo doit contenir au moins 4 caractères</div>';
+                    $contenu .= '<div>Le pseudo doit contenir au moins 4 caractères</div>';
                 }
 
                 if(strlen($_POST['mdp']) < 4 || strlen($_POST['mdp']) > 60){
-                    $contenu .= '<div class="bg-danger">Le mot de passe doit contenir au moins 4 caractères</div>';
+                    $contenu .= '<div>Le mot de passe doit contenir au moins 4 caractères</div>';
                 }
 
                 if(strlen($_POST['nom']) < 2 || strlen($_POST['nom']) > 20){
-                    $contenu .= '<div class="bg-danger">Le nom doit contenir au moins 2 caractères</div>';
+                    $contenu .= '<div>Le nom doit contenir au moins 2 caractères</div>';
                 }
 
                 if(strlen($_POST['prenom']) < 2 || strlen($_POST['prenom']) > 20){
-                    $contenu .= '<div class="bg-danger">Le prenom doit contenir au moins 2 caractères</div>';
+                    $contenu .= '<div>Le prenom doit contenir au moins 2 caractères</div>';
                 }
 
                 if(!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL) && $_POST['email'] > 50){
-                    $contenu .= '<div class="bg-danger">Email invalide</div>';
+                    $contenu .= '<div>Email invalide</div>';
                 }
 
                 if($_POST['civilite'] != 'm' && $_POST['civilite'] != 'f'){
-                    $contenu .= '<div class="bg-danger">La civilité est incorrect</div>';
+                    $contenu .= '<div>La civilité est incorrect</div>';
                 }
 
                 if(empty($contenu)){ //si contenue est vide, c'est qu'il n'y a pas d'erreur
 
+                    foreach($_POST as $indice => $valeur){
+                        $_POST[$indice] = htmlspecialchars($valeur, ENT_QUOTES);
+                    }
 
+                    $resultat = $pdo->prepare("SELECT id_membre FROM membre WHERE pseudo = :pseudo"); //on vérifie l'existence du pseudo
+                    $resultat->bindParam(':pseudo', $_POST['pseudo'], PDO::PARAM_STR);
 
-                    $membre = executeRequete("SELECT id_membre FROM membre WHERE pseudo = :pseudo", array(':pseudo' =>$_POST['pseudo'])); //on vérifie l'existence du pseudo
+                    $req = $resultat->execute(); 
 
-                    if($membre->rowCount() > 0){ //Si il y a des lignes dans le reultat de la requête
+                    if($req->rowCount() > 0){ //Si il y a des lignes dans le reultat de la requête
                         $contenu .= '<div>Le pseudo est indisponible : veuillez en choisir un autre</div>';
                     } else{
                         //si le pseudo est unique, on peut faire l'inscription en BDD:
@@ -68,16 +73,16 @@
 
     ?>
     <section class="modal">
-        <h3>Veuillez renseigner le formulaire pour vous inscrire</h3>
+        <h3>Inscription</h3>
             <form method="post" action="">
 
             <input type="text" id="pseudo" name="pseudo" placeholder="Votre pseudo" value="">
 
             <input type="password" id="mdp" name="mdp" placeholder="Votre mot de passe" value="">
 
-            <input type="text" id="nom" name="nom" placeholder="Votre nom" value="">
-
             <input type="text" id="prenom" name="prenom" placeholder="Votre prénom" value="">
+
+            <input type="text" id="nom" name="nom" placeholder="Votre nom" value="">
 
             <input type="text" id="email" name="email" placeholder="Votre email" value="">
 
@@ -85,7 +90,6 @@
                 <input type="radio" name="civilite" id="homme" value="m" checked><label for="homme">Homme</label>
                 <input type="radio" name="civilite" id="femme" value="f" ><label for="femme">Femme</label>
 
-                <input type="submit" name="inscription" value="s'inscrire">
-
+                <input type="submit" name="inscription" value="s'inscrire" name="inscription">
             </form>
         </section>
