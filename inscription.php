@@ -57,23 +57,20 @@
 
 
     ?>
-    <h3>Veuillez renseigner le formulaire pour vous inscrire</h3>
+    <h3>S'inscrire</h3>
+        <link rel="stylesheet" href="css/style.css">
+
         <form method="post" action="">
 
-            <label for="pseudo">Pseudo :</label>
-            <input type="text" id="pseudo" name="pseudo" value="">
+            <input type="text" id="pseudo" name="pseudo" placeholder="Votre pseudo" value="">
 
-            <label for="mdp">Mot de passe :</label>
-            <input type="password" id="mdp" name="mdp" value="">
+            <input type="password" id="mdp" name="mdp" placeholder="Votre mot de passe" value="">
 
-            <label for="nom">Nom :</label>
-            <input type="text" id="nom" name="nom" value="">
+            <input type="text" id="nom" name="nom" placeholder="Votre nom" value="">
 
-            <label for="prenom">Prenom :</label>
-            <input type="text" id="prenom" name="prenom" value="">
+            <input type="text" id="prenom" name="prenom" placeholder="Votre prénom" value="">
 
-            <label for="email">Email :</label>
-            <input type="text" id="email" name="email" value="">
+            <input type="text" id="email" name="email" placeholder="Votre email" value="">
 
             <label for="civilite">Civilité :</label>
             <input type="radio" name="civilite" id="homme" value="m" checked><label for="homme">Homme</label>

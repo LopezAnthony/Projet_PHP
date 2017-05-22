@@ -55,14 +55,14 @@
 
 /*Style inscription*/
 .modal[type="submit"]{
-
+padding: 2rem 2rem;
 }
 
 input{
     display: block;
 }
 
-form{
+[type="submit"]{
     background-color: blue;
 }
 
