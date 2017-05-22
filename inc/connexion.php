@@ -51,6 +51,7 @@ require_once('inc/init.inc.php');
 
     ?>
     <section class="modal2 hidden">
+    <article>
         <h3>Connexion <i class="fa fa-times" aria-hidden="true"></i></h3>
         <form method="post" action="">
 
@@ -60,6 +61,7 @@ require_once('inc/init.inc.php');
 
             <input type="submit" value="se connecter" class="btn" name="connexion">
         </form>
+    </article>
     </section>
 
 
