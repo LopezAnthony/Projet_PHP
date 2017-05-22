@@ -9,10 +9,6 @@ require_once('inc/init.inc.php');
         session_destroy();
     }
 
-    if(userConnected()){ //si l'internaute est déjà connecté, il n'a rien à faire ici, on le redirige donc vers son profil.
-        header('location:profil.php'); //demande la page profil.php
-    }
-
     //Traitement du formulaire de connexion, et remplissage de la session:
     if(isset($_POST['connexion'])){
         //contrôle de formulaire :
@@ -30,7 +26,7 @@ require_once('inc/init.inc.php');
             $req = $pdo->prepare("SELECT * FROM membre where pseudo = :pseudo AND mdp = :mdp");
 
             $req->bindParam(':pseudo', $_POST['pseudo'], PDO::PARAM_STR);
-            $req->bindParam(':mdp', $_POST['mdp'], PDO::PARAM_STR);
+            $req->bindParam(':mdp', $mdp, PDO::PARAM_STR);
 
             $req->execute();
 

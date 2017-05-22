@@ -29,7 +29,7 @@
 
     nav{
         position: relative;
-        background-color: lightgray;
+        background-color: white;
         margin: 2rem;
         padding: 1.5rem;
     }
@@ -58,22 +58,26 @@
 .modal input, .modal2 input{
     display: block;
     border-radius: .5rem;
-    padding: .2rem 0 .2rem .2rem;
+    padding: .5rem 1.5rem .5rem .5rem;
     margin-top: .5rem;
 }
 
 .modal [type="submit"], .modal2 [type="submit"]{
     background-color: #0066ff;
-    border-radius: 2rem;
-    padding: .5rem;
+    border-radius: 1rem;
+    padding: .5rem 2rem;
     color: white;
-    margin-top: .3rem;
+    margin-top: 1rem;
 }
 
 input [type="radio"]{
     display: inline-block;
 }
 
+.fa{
+    cursor: pointer;
+}
 .hidden{
     display: none;
 }
+
