@@ -18,8 +18,8 @@
                     <li><a href="">Contact</a></li>
                     <li><a href=""><i class="fa fa-user" aria-hidden="true"></i>Espace Membre</a>
                         <ul>
-                            <li><a href="">Inscription</a></li>
-                            <li><a href="">Connexion</a></li>
+                            <li><a href="#" id="inscription">Inscription</a></li>
+                            <li><a href="" id="connexion">Connexion</a></li>
                             <li><a href="">Profil</a></li>
                         </ul>
                     </li>

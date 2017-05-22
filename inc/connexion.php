@@ -55,7 +55,7 @@ require_once('inc/init.inc.php');
 
     ?>
     <section class="modal2 hidden">
-        <h3>Connexion</h3>
+        <h3>Connexion <i class="fa fa-times" aria-hidden="true"></i></h3>
         <form method="post" action="">
 
             <input type="text" id="pseudo" name="pseudo" value="" placeholder="pseudo">

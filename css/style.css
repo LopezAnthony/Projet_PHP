@@ -55,13 +55,11 @@
 
 /*Style inscription*/
 
-input{
+.modal input, .modal2 input{
+    display: block;
     border-radius: .5rem;
     padding: .2rem 0 .2rem .2rem;
     margin-top: .5rem;
-}
-.modal input, .modal2 input{
-    display: block;
 }
 
 .modal [type="submit"], .modal2 [type="submit"]{
@@ -76,3 +74,6 @@ input [type="radio"]{
     display: inline-block;
 }
 
+.hidden{
+    display: none;
+}
