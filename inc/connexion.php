@@ -9,10 +9,6 @@ require_once('inc/init.inc.php');
         session_destroy();
     }
 
-    if(userConnected()){ //si l'internaute est déjà connecté, il n'a rien à faire ici, on le redirige donc vers son profil.
-        header('location:profil.php'); //demande la page profil.php
-    }
-
     //Traitement du formulaire de connexion, et remplissage de la session:
     if(isset($_POST['connexion'])){
         //contrôle de formulaire :
@@ -27,15 +23,15 @@ require_once('inc/init.inc.php');
         //si le formulaire est correcte, on contrôle les identifiants :
         if(empty($contenu)){
             $mdp = md5($_POST['mdp']); //on crypte le mdp pour le comparer avec celui de la base
-            $req = prepare("SELECT * FROM membre where pseudo = :pseudo AND mdp = :mdp");
+            $req = $pdo->prepare("SELECT * FROM membre where pseudo = :pseudo AND mdp = :mdp");
 
             $req->bindParam(':pseudo', $_POST['pseudo'], PDO::PARAM_STR);
-            $req->bindParam(':mdp', $_POST['mdp'], PDO::PARAM_STR);
+            $req->bindParam(':mdp', $mdp, PDO::PARAM_STR);
 
-            $resultat = $req->execute();
+            $req->execute();
 
-            if($resultat->rowCount() != 0){ //si il y a un enregistrement dans le resultat, c'est que le pseudo et mdp correspondent.
-                $membre = $resultat->fetch(PDO::FETCH_ASSOC); //pas de while car il y a qu'un seul pseudo de même nom.
+            if($req->rowCount() != 0){ //si il y a un enregistrement dans le resultat, c'est que le pseudo et mdp correspondent.
+                $membre = $req->fetch(PDO::FETCH_ASSOC); //pas de while car il y a qu'un seul pseudo de même nom.
                 echo '<pre>'; print_r($membre); echo '</pre>';
 
                 $_SESSION['membre'] = $membre; // nous remplissons la session avec les éléments provennant de la bdd. Cette session permet de conserver les infos du membre dans l'ensemble du site.
@@ -53,9 +49,7 @@ require_once('inc/init.inc.php');
 
 //---------------------------AFFICHAGE-----------------------------
 
-    echo $contenu;
     ?>
-
     <section class="modal2 hidden">
         <h3>Connexion</h3>
         <form method="post" action="">

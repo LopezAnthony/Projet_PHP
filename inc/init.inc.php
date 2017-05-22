@@ -6,7 +6,7 @@
     session_start();
 
     //Chemin du site
-    define('RACINE_SITE', '/PHP/08site/');
+    define('RACINE_SITE', '/Projet_PHP/');
 
     //variable affichage.
     $contenu ='';

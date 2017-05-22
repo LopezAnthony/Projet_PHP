@@ -61,7 +61,7 @@
                         
                         $resultat->execute();
 
-                        $contenu .= '<p>Vous êtes inscrit. <a href="connexion.php">Cliquez ici pour vous connecter</a></p>';
+                        $contenu .= '<p>Vous êtes inscrit.</p>';
                     }//fin du else de if ($membre->rowCount()>0)
                 }//fin du if(empty($contenu))
             } //fin du if(!empty($_POST))
@@ -73,7 +73,7 @@
 
     ?>
     <section class="modal hidden">
-        <h3>Inscription <i class="fa fa-times" aria-hidden="true"></i></h3>
+        <h3>Inscription</h3>
             <form method="post" action="">
 
             <input type="text" id="pseudo" name="pseudo" placeholder="Votre pseudo" value="">
