@@ -1,18 +1,26 @@
 $(document).ready(function(){
 
-function openModal1(){
-    $('a[href$="inscription"]').click(function(evt){
+    $('#inscription').click(function(evt){
         evt.preventDefault()
-        var modal = $(this).removeClass(hidden)
-        $('.modal').text(modal)
+        $('.modal').removeClass('hidden')
 
-        $('.modal').fadeToggle()
+        $('.modal').fadeIn()
     })
 
     $('.fa').click(function(){
-        $('.modal').fadeToggle()
+        $('.modal').fadeOut()
     })
-}
+
+    $('#connexion').click(function(evt){
+        evt.preventDefault()
+        $('.modal2').removeClass('hidden')
+
+        $('.modal2').fadeIn()
+    })
+
+    $('.fa').click(function(){
+        $('.modal2').fadeOut()
+    })
 
 
 

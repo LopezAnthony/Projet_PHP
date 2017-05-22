@@ -6,7 +6,7 @@ require_once('inc/init.inc.php');
         //Déconnexion demandée par l'internaute :
     if(isset($_GET['action']) && $_GET['action'] == 'deconnexion'){
         //si l'internaute demande la déconnexion, on détruit la session :
-        session_destroy();
+        unset($_SESSION['membre']);
     }
 
     //Traitement du formulaire de connexion, et remplissage de la session:
@@ -51,7 +51,8 @@ require_once('inc/init.inc.php');
 
     ?>
     <section class="modal2 hidden">
-        <h3>Connexion</h3>
+    <article>
+        <h3>Connexion <i class="fa fa-times" aria-hidden="true"></i></h3>
         <form method="post" action="">
 
             <input type="text" id="pseudo" name="pseudo" value="" placeholder="pseudo">
@@ -60,6 +61,7 @@ require_once('inc/init.inc.php');
 
             <input type="submit" value="se connecter" class="btn" name="connexion">
         </form>
+    </article>
     </section>
 
 

@@ -68,28 +68,31 @@
 
 
 //-------------------AFFICHAGE----------------------
-    echo $contenu; //affiche les messages du site
 
 
     ?>
     <section class="modal hidden">
-        <h3>Inscription</h3>
-            <form method="post" action="">
+        <article>
+            <h3>Inscription <i class="fa fa-times" aria-hidden="true"></i></h3>
+                <form method="post" action="">
 
-            <input type="text" id="pseudo" name="pseudo" placeholder="Votre pseudo" value="">
+                <input type="text" id="pseudo" name="pseudo" placeholder="Votre pseudo" value="">
 
-            <input type="password" id="mdp" name="mdp" placeholder="Votre mot de passe" value="">
+                <input type="password" id="mdp" name="mdp" placeholder="Votre mot de passe" value="">
 
-            <input type="text" id="prenom" name="prenom" placeholder="Votre prénom" value="">
+                <input type="text" id="prenom" name="prenom" placeholder="Votre prénom" value="">
 
-            <input type="text" id="nom" name="nom" placeholder="Votre nom" value="">
+                <input type="text" id="nom" name="nom" placeholder="Votre nom" value="">
 
-            <input type="text" id="email" name="email" placeholder="Votre email" value="">
+                <input type="text" id="email" name="email" placeholder="Votre email" value="">
 
-                <label for="civilite">Civilité :</label>
-                <input type="radio" name="civilite" id="homme" value="m" checked><label for="homme">Homme</label>
-                <input type="radio" name="civilite" id="femme" value="f" ><label for="femme">Femme</label>
+                    <label for="civilite">Civilité :</label>
+                    <input type="radio" name="civilite" id="homme" value="m" checked>
+                    <label for="homme">Homme</label>
+                    <input type="radio" name="civilite" id="femme" value="f" >
+                    <label for="femme">Femme</label>
 
-                <input type="submit" name="inscription" value="s'inscrire" name="inscription">
-            </form>
+                    <input type="submit" name="inscription" value="s'inscrire" name="inscription">
+                </form>
+        </article>
         </section>
