@@ -35,18 +35,28 @@
 
                 if(empty($contenu)){ //si contenue est vide, c'est qu'il n'y a pas d'erreur
 
-                    $membre = $pdo->prepare("SELECT id_membre FROM membre WHERE pseudo = :pseudo"); //on vérifie l'existence du pseudo
+
+
+                    $membre = executeRequete("SELECT id_membre FROM membre WHERE pseudo = :pseudo", array(':pseudo' =>$_POST['pseudo'])); //on vérifie l'existence du pseudo
 
                     if($membre->rowCount() > 0){ //Si il y a des lignes dans le reultat de la requête
-                        $contenu .= '<div class="bg-danger">Le pseudo est indisponible : veuillez en choisir un autre</div>';
+                        $contenu .= '<div>Le pseudo est indisponible : veuillez en choisir un autre</div>';
                     } else{
                         //si le pseudo est unique, on peut faire l'inscription en BDD:
                         $_POST['mdp'] = md5($_POST['mdp']); //permet d'encrypter le mot de passe selon l'algorithme md5. Il faudra le faire aussi sur la page de connexion pour comparer 2 mots cryptés
 
-                        executeRequete("INSERT INTO membre (pseudo, mdp, nom, prenom, email, civilite, statut, date_enregistrement) VALUES(:pseudo, :mdp, :nom, :prenom, :email, :civilite, 0, date() )", array(':pseudo' => $_POST['pseudo'], ':mdp' => $_POST['mdp'], 'nom' => $_POST['nom'], 'prenom' => $_POST['prenom'], ':email' => $_POST['email'], ':civilite' => $_POST['civilite']));
+                        $resultat = $pdo->prepare("INSERT INTO membre (pseudo, mdp, nom, prenom, email, civilite, statut, date_enregistrement) VALUES(:pseudo, :mdp, :nom, :prenom, :email, :civilite, 0, NOW() )");
+
+                        $resultat->bindParam(':pseudo', $_POST['pseudo'], PDO::PARAM_STR);
+                        $resultat->bindParam(':mdp', $_POST['mdp'], PDO::PARAM_STR);
+                        $resultat->bindParam(':prenom', $_POST['prenom'], PDO::PARAM_STR);
+                        $resultat->bindParam(':nom', $_POST['nom'], PDO::PARAM_STR);
+                        $resultat->bindParam(':email', $_POST['email'], PDO::PARAM_STR);
+                        $resultat->bindParam(':civilite', $_POST['civilite'], PDO::PARAM_STR);
+                        
+                        $resultat->execute();
 
                         $contenu .= '<p>Vous êtes inscrit. <a href="connexion.php">Cliquez ici pour vous connecter</a></p>';
-                        $inscription = true; //pour ne plus afficher le formulaire d'inscription.
                     }//fin du else de if ($membre->rowCount()>0)
                 }//fin du if(empty($contenu))
             } //fin du if(!empty($_POST))
