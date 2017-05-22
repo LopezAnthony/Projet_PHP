@@ -53,3 +53,16 @@
         margin-right: .5rem;
     }
 
+/*Style inscription*/
+.modal[type="submit"]{
+
+}
+
+input{
+    display: block;
+}
+
+form{
+    background-color: blue;
+}
+
