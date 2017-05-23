@@ -24,8 +24,8 @@ require_once('inc/header.php');
 
         <label for="salle">Salle</label>
         <select>
-            <?php while($result->fetch(PDO::FETCH_ASSOC)){
-                $contenu .= '<option value="$result[id_salle]">'. $result['id_salle'] .' - '. $result['titre'] .' - '. $result['adresse'] .' - '. $result['cp'] .' - '. $result['ville'] .' - '. $result['capacite'] .'</option>';
+            <?php while($ligne = $result->fetch(PDO::FETCH_ASSOC)){
+                echo '<option value="'.$ligne['id_salle'].'">'. $ligne['id_salle'] .' - '. $ligne['titre'] .' - '. $ligne['adresse'] .' - '. $ligne['cp'] .' - '. $ligne['ville'] .' - '. $ligne['capacite'] .'</option>';
             }?>
         </select>
 

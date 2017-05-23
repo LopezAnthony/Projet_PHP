@@ -181,7 +181,7 @@ $contenu .= '</table>';
             </select>
 
             <label for="categories">Catégorie :</label>
-            <select name="categories" id="categories">
+            <select name="categories" id="categories" value="">
                 <option value="NULL">--selectionner--</option>
                 <?php foreach($categorie as $indice => $valeur){
                     echo '<option value="'. $valeur .'">'. $valeur .'</option>';
