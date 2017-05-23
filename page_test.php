@@ -10,19 +10,15 @@ require_once('inc/header.php');
     <section>
         <p>Catégories</p>
         <ul>
-            <?php while ($select = $resultat->fetch(PDO::FETCH_ASSOC)) {
-                    echo '<li><a href="?categories='. $select['categories'] .'">'. $select['categories'] .'</a></li>'; 
-                } ?>
+            <?php 
+                while ( $select = $resultat->fetch(PDO::FETCH_ASSOC )) {
+                        echo '<li><a href="?categories='. $select['categories'] .'">'. $select['categories'] .'</a></li>'; 
+                }
+            ?>
         </ul>
 
         <p>Ville</p>
-        <ul>
-            <?php while ($select = $resultat->fetch(PDO::FETCH_ASSOC)) {
-                    print_r($select);
-                    echo '<li><a href="?ville='. $select['ville'] .'">'. $select['ville'] .'</a></li>'; 
-                } ?>
-        </ul>
-        
+
         <form method="post" action="">
             <label for="capacite">Capacité</label>
             <select name="capacite" id="capacite">
