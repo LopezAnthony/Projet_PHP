@@ -7,7 +7,7 @@
     }
 
 //-------------------------------TRAITEMENT----------------------------------
-$commande = $pdo->query("SELECT id_commande, id_membre, id_produit, date_enregistrement, prix, email FROM commande c INNER JOIN produit p ON c.id_produit = p.id_produit INNER JOIN membre m ON c.id_membre = m.id_membre");
+$commande = $pdo->query("SELECT id_commande, id_membre, id_produit, date_enregistrement, prix, email FROM membre m INNER JOIN commande c ON m.id_membre = c.id_membre INNER JOIN produit p ON c.id_produit = p.id_produit");
 
 $contenu .= '<h1>Gestion des commandes</h1>
 			<table border="1">';
@@ -18,21 +18,21 @@ $contenu .= '<h1>Gestion des commandes</h1>
 						<th>prix</th>
 						<th>date_enregistrement</th>
 					</tr>';
-while($afficheCommande = $commande->fetch(PDO::FETCH_ASSOC)){
-    $contenu .= '<tr>
-                    <td>'. $afficheCommande['id_commande'] .'</td>
-                    <td>'. $afficheCommande['id_membre'] .' - '. $afficheCommande['email'] .'</td>
-                    <td>'. $afficheCommande['id_produit'] .'</td>
-                    <td>'. $afficheCommande['prix'] .'</td>
-                    <td>'. $afficheCommande['date_enregistrement'] .'</td>
-                    <td>
-                    <a href="fiche_produit.php?id_salle='.  $salle['id_salle'] .'"><i class="fa fa-search" aria-hidden="true"></i></a>
+// while($afficheCommande = $commande->fetch(PDO::FETCH_ASSOC)){
+//     $contenu .= '<tr>
+//                     <td>'. $afficheCommande['id_commande'] .'</td>
+//                     <td>'. $afficheCommande['id_membre'] .' - '. $afficheCommande['email'] .'</td>
+//                     <td>'. $afficheCommande['id_produit'] .'</td>
+//                     <td>'. $afficheCommande['prix'] .'</td>
+//                     <td>'. $afficheCommande['date_enregistrement'] .'</td>
+//                     <td>
+//                     <a href="fiche_produit.php?id_salle='.  $salle['id_salle'] .'"><i class="fa fa-search" aria-hidden="true"></i></a>
                                         
-                    <a href="?id_salle='.  $salle['id_salle'] .'& action=suppr"><i class="fa fa-trash" aria-hidden="true"></i></a>
+//                     <a href="?id_salle='.  $salle['id_salle'] .'& action=suppr"><i class="fa fa-trash" aria-hidden="true"></i></a>
                     
-                    </td>
-                </tr>';
-}
+//                     </td>
+//                 </tr>';
+// }
 
 
 
