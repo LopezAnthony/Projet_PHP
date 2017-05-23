@@ -32,12 +32,12 @@
 
                             <?php if(adminConnected()) : ?>
 
-                            <li><a href="">Gestion des salles</a></li>
-                            <li><a href="">Gestion des produits</a></li>
-                            <li><a href="">Gestion des membres</a></li>
-                            <li><a href="">Gestion des avis</a></li>
-                            <li><a href="">Gestion des commandes</a></li>
-                            <li><a href="">Statistiques</a></li>
+                            <li><a href="gestion_salle.php">Gestion des salles</a></li>
+                            <li><a href="gestion_produit.php">Gestion des produits</a></li>
+                            <li><a href="gestion_membre.php">Gestion des membres</a></li>
+                            <li><a href="gestion_avis.php">Gestion des avis</a></li>
+                            <li><a href="gestion_commande.php">Gestion des commandes</a></li>
+                            <li><a href="statistiques.php">Statistiques</a></li>
 
                             <?php endif; ?>
                         </ul>
