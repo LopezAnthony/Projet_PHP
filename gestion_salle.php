@@ -6,7 +6,7 @@
         exit();
     }
 
-    $categorie = array('reunion', 'bureau', 'conference', 'seminaire');
+    $categorie = array('bureau', 'formation', 'reunion');
 //-------------------------------TRAITEMENT----------------------------------
 
         if(isset($_GET['action']) && $_GET['action'] == 'suppr'){ 
