@@ -25,7 +25,7 @@
 
 
         if(!empty($_FILES['photo']['name'])){ //si une image a été uploadée, $_FILES est remplie
-            if($_FILES['photo']['error'] == 0 && $_FILES['photo']['type'] == 'image/jpeg' && $_FILES['photo']['size'] < 200000){
+            if($_FILES['photo']['error'] == 0 && $_FILES['photo']['type'] == 'image/jpeg' && $_FILES['photo']['size'] < 2097152 ){
                 //on constitue un nom unique pour le fichier photo :
                 $nom_photo = $_POST['categories'] . '_' . $_FILES['photo']['name'];
 
