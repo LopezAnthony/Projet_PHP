@@ -9,6 +9,10 @@
     $categorie = array('reunion', 'bureau', 'conference', 'seminaire');
 //-------------------------------TRAITEMENT----------------------------------
 
+    if(isset($_GET['action']) && $_GET['action'] == "suppr"){
+        die($_GET['id_salle']);
+    }
+    
     if(isset($_POST['gestion_salle'])){
 
         if(strlen($_POST['titre']) < 4 || strlen($_POST['titre']) > 20){
@@ -88,6 +92,50 @@
         }
 
     }
+
+    $query = $pdo->query('SELECT * FROM salle');
+    $query->execute();    
+    $contenu .= '<h1>Gestion des salles</h1>
+			<table border="1">';
+		$contenu .= '<tr>
+						<th>id_salle</th>
+						<th>Titre</th>
+						<th>Description</th>
+                        <th>Photo</th>
+                        <th>Pays</th>
+                        <th>Ville</th>
+                        <th>Adresse</th>
+                        <th>Code Postal</th>
+                        <th>Capacité</th>
+                        <th>Catégorie</th>
+                        <th>Actions</th>
+					</tr>';
+
+while($salle = $query->fetch(PDO::FETCH_ASSOC)){
+    $contenu .= '<tr>
+                    <td>'. $salle['id_salle'] .'</td>
+                    <td>'. $salle['titre'] .'</td>
+                    <td>'. $salle['description'] .'</td>
+                    <td><img src="'.$salle['photo'].'" alt="" width="90" height="70"></td>
+                    <td>'. $salle['pays'] .'</td>
+                    <td>'. $salle['ville'] .'</td>
+                    <td>'. $salle['adresse'] .'</td>
+                    <td>'. $salle['cp'] .'</td>
+                    <td>'. $salle['capacite'] .'</td>
+                    <td>'. $salle['categories'] .'</td>
+                    <td>
+                    <a href="fiche_produit.php?id_salle='.  $salle['id_salle'] .'"><i class="fa fa-search" aria-hidden="true"></i></a>
+                    
+                    <a href=""><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+                    
+                    <a href="?id_salle='.  $salle['id_salle'] .'& action=suppr"><i class="fa fa-trash" aria-hidden="true"></i></a>
+                    
+                    </td>
+                </tr>';
+}
+$contenu .= '</table>';
+
+
 
 
 

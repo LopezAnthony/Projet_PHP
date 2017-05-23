@@ -17,7 +17,6 @@ $contenu .= '<h1>Gestion des commandes</h1>
 						<th>id produit</th>
 						<th>prix</th>
 						<th>date_enregistrement</th>
-						<th>actions</th>
 					</tr>';
 while($afficheCommande = $commande->fetch(PDO::FETCH_ASSOC)){
     $contenu .= '<tr>
@@ -26,7 +25,6 @@ while($afficheCommande = $commande->fetch(PDO::FETCH_ASSOC)){
                     <td>'. $afficheCommande['id_produit'] .'</td>
                     <td>'. $afficheCommande['prix'] .'</td>
                     <td>'. $afficheCommande['date_enregistrement'] .'</td>
-                    <td>'.  .'</td>
                 </tr>';
 }
 
