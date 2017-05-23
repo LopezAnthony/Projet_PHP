@@ -1,7 +1,7 @@
 @import url('https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
 
 /*
-    Style Reset
+Style Reset
 */
     *{
         margin: 0;
@@ -24,7 +24,7 @@
     }
 
 /*
-    Style Header
+Style Header
 */
 
     nav{
@@ -53,7 +53,15 @@
         margin-right: .5rem;
     }
 
-/*Style footer*/
+
+/*
+Style Gestion
+*/
+
+/*
+Style footer
+*/
+
 footer{
     background-color: lightgray;
     margin: 2rem 2rem 0 2rem;
@@ -66,7 +74,9 @@ footer p{
     color: grey;
 }
 
-/*Style inscription, connexion */
+/*
+Style inscription, connexion
+*/
 
 input{
     display: block;
@@ -89,7 +99,9 @@ label,textarea, input, select{
     margin-top: 1rem;
 }
 
-/*Style modal*/
+/*
+Style modal
+*/
 .modal, .modal2{
     position: fixed;
     z-index: 2000;
@@ -114,7 +126,7 @@ label,textarea, input, select{
     position: relative;
 }
 
-.fa{
+.fa-times{
     cursor: pointer;
     top: 0;
     right: 0;
