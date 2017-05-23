@@ -9,8 +9,19 @@
     $categorie = array('reunion', 'bureau', 'conference', 'seminaire');
 //-------------------------------TRAITEMENT----------------------------------
 
-    if(isset($_GET['action']) && $_GET['action'] == "suppr"){
-        die($_GET['id_salle']);
+        if(isset($_GET['action']) && $_GET['action'] == 'suppr'){ 
+        $resultat = executeRequete("SELECT photo FROM salle WHERE id_salle = :id_salle", array(':id_salle' => $_GET['id_salle'])); 
+
+        $produit_a_supprimer = $resultat->fetch(PDO::FETCH_ASSOC); 
+        
+        $chemin_photo_a_supprimer = $_SERVER['DOCUMENT_ROOT'] . $produit_a_supprimer['photo']; 
+
+        if (!empty($produit_a_supprimer['photo']) && file_exists($chemin_photo_a_supprimer)) { 
+        
+        unlink($chemin_photo_a_supprimer);  
+        } 
+
+        executeRequete("DELETE FROM salle WHERE id_salle = :id_salle", array(':id_salle' => $_GET['id_salle'])); 
     }
     
     if(isset($_POST['gestion_salle'])){

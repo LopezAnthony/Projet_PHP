@@ -18,4 +18,28 @@ function adminConnected(){
     }
 }
 
+//----------------executeRequete 
+function executeRequete($req, $param = array()) {  
+    if (!empty($param)) { 
+        foreach($param as $indice => $valeur){  
+            $param[$indice] = htmlspecialchars($valeur, ENT_QUOTES); 
+        } 
+    } 
+ 
+    global $pdo;  
+    $r = $pdo->prepare($req); 
+    $succes = $r->execute($param); 
+ 
+    if(!$succes) {  
+        die('Erreur sur la requête SQL : ' . $r->errorInfo()[2] ); 
+    } 
+ 
+    return $r;  
+ 
+} 
+
+
+
 ?>
+
+
