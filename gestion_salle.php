@@ -8,13 +8,13 @@
 
     $categorie = array('reunion', 'bureau', 'conference', 'seminaire');
 //-------------------------------TRAITEMENT----------------------------------
+
     if(isset($_POST['gestion_salle'])){
+
         if(strlen($_POST['titre']) < 4 || strlen($_POST['titre']) > 20){
             $contenu .= '<div class="bg-danger">Le titre doit contenir au moins 4 caractères</div>';
         }
-    }
 
-    if(isset($_POST['gestion_salle'])){
         if(strlen($_POST['description']) < 4 || strlen($_POST['description']) > 255){
             $contenu .= '<div class="bg-danger">Le titre doit contenir au moins 4 caractères</div>';
         }
@@ -25,12 +25,9 @@
 
 
         if(!empty($_FILES['photo']['name'])){ //si une image a été uploadée, $_FILES est remplie
-
-            echo '<pre>'; print_r($_FILES); echo '</pre>';
-
-            if($_FILES['photo']['error'] == 0 && $_FILES['photo']['type'] == 'image/jpeg' && $_FILES['photo']['size'] < 4){
+            if($_FILES['photo']['error'] == 0 && $_FILES['photo']['type'] == 'image/jpeg' && $_FILES['photo']['size'] < 200000){
                 //on constitue un nom unique pour le fichier photo :
-                $nom_photo = $_POST['reference'] . '_' . $_FILES['photo']['name'];
+                $nom_photo = $_POST['categories'] . '_' . $_FILES['photo']['name'];
 
                 //on constitue le chemin de la photo enregistrée en BDD :
                 $photo_bdd = RACINE_SITE . 'photo/' . $nom_photo; //on optient ici le nom et le chemin de la photo depuis la racine du site
@@ -43,8 +40,51 @@
                 //enregistrement du fichier photo sur le serveur :
                 copy($_FILES['photo']['tmp_name'], $photo_dossier); //on copie le fichier temporaire de la photo stockée au chemin indiqué par $_FILES['photo']['tmp_name'] dans le chemin $photo_dossier de noter serveur
             }else{
-                $contenu .= 'erreur photo';
+                $contenu .= '<p>erreur photo</p>';
             }
+        }
+
+        if(is_numeric($_POST['capacite']) && $_POST['capacite'] < 0 && $_POST['capacite'] >= 30){
+            $contenu .= '<p>erreur capacite</p>';
+        }
+
+        if(!in_array($_POST['categories'], $categorie) && $_POST['categories'] != 'NULL'){
+            $contenu .= '<p>erreur categorie</p>';
+        }
+
+        if(strlen($_POST['pays']) < 2 || strlen($_POST['pays']) > 21){
+            $contenu .= '<p>erreur Pays</p>';
+        }
+
+        if(strlen($_POST['ville']) < 2 || strlen($_POST['ville']) > 21){
+            $contenu .= '<p>erreur Ville</p>';
+        }
+
+        if(strlen($_POST['adresse']) < 4 || strlen($_POST['adresse']) > 50){
+                    $contenu .= '<p>erreur adresse</p>';
+        }
+
+        if(empty($contenu)){
+            foreach($_POST as $indice => $valeur){
+                        $_POST[$indice] = htmlspecialchars($valeur, ENT_QUOTES);
+                    }
+        
+
+            $resultat = $pdo->prepare("INSERT INTO salle (titre, description, photo, pays, ville, adresse, cp, capacite, categories) VALUES(:titre, :description, :photo, :pays, :ville, :adresse, :cp, :capacite, :categories)");
+
+            $resultat->bindParam(':titre', $_POST['titre'], PDO::PARAM_STR);
+            $resultat->bindParam(':description', $_POST['description'], PDO::PARAM_STR);
+            $resultat->bindParam(':photo', $photo_bdd, PDO::PARAM_STR);
+            $resultat->bindParam(':pays', $_POST['pays'], PDO::PARAM_STR);
+            $resultat->bindParam(':ville', $_POST['ville'], PDO::PARAM_STR);
+            $resultat->bindParam(':adresse', $_POST['adresse'], PDO::PARAM_STR);
+            $resultat->bindParam(':cp', $_POST['cp'], PDO::PARAM_INT);
+            $resultat->bindParam(':capacite', $_POST['capacite'], PDO::PARAM_INT);
+            $resultat->bindParam(':categories', $_POST['categories'], PDO::PARAM_STR);
+
+            $resultat->execute();
+
+            $contenu .= '<p>La salle a bien été ajouté.</p>';
         }
 
     }
@@ -57,6 +97,10 @@
 ?>
 
     <section>
+        <?php echo $contenu; ?>
+    </section>
+
+    <section>
         <form method="POST" enctype="multipart/form-data" action="">
 
             <input type="hidden" id="id_produit" name="id_produit" value="">
@@ -65,7 +109,7 @@
             <input type="text" id="titre" name="titre" placeholder="Titre de la salle" value="">
 
             <label for="description">Description :</label><br>
-            <textarea name="description" id="description" placeholder="Description de la salee"></textarea>
+            <textarea name="description" id="description" placeholder="Description de la salle"></textarea>
             
             <label for="photo">Photo :</label><br>
             <input type="file" id="photo" name="photo">
@@ -77,10 +121,11 @@
                 } ?>
             </select>
 
-            <label for="categorie">Catégorie :</label>
-            <select name="categorie" id="categorie">
-                <?php foreach($categorie as $indice){
-                    echo '<option value="'. $categorie .'">'. $indice .'</option>';
+            <label for="categories">Catégorie :</label>
+            <select name="categories" id="categories">
+                <option value="NULL">--selectionner--</option>
+                <?php foreach($categorie as $indice => $valeur){
+                    echo '<option value="'. $valeur .'">'. $valeur .'</option>';
                 } ?>
             </select>
 
