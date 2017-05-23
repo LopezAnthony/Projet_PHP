@@ -33,7 +33,7 @@
                     $contenu .= '<div>La civilité est incorrect</div>';
                 }
 
-                if(empty($contenu)){ //si contenue est vide, c'est qu'il n'y a pas d'erreur
+                if(empty($contenu)){
 
                     foreach($_POST as $indice => $valeur){
                         $_POST[$indice] = htmlspecialchars($valeur, ENT_QUOTES);

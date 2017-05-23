@@ -10,6 +10,9 @@
 
 //-------------------------------TRAITEMENT----------------------------------
 $result = $pdo->query("SELECT * FROM salle");
+
+$date = new DateTime('$_POST['date_arrivee']');
+
 //--------------------------------AFFICHAGE----------------------------------
 require_once('inc/header.php');
 ?>
@@ -30,7 +33,7 @@ require_once('inc/header.php');
         </select>
 
         <label for="tarif">Tarif</label>
-        <i class="fa fa-eur" aria-hidden="true"></i><input type="number" name="tarif" value="" placeholder="Prix en euros">
+        <i class="fa fa-eur" aria-hidden="true"></i><input type="text" name="tarif" value="" placeholder="Prix en euros">
 
         <input type="submit" name="gestion_produit" value="Enregistrer">
     </form>
