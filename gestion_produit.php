@@ -6,12 +6,8 @@
         exit();
     }
 
-
-
 //-------------------------------TRAITEMENT----------------------------------
 $result = $pdo->query("SELECT * FROM salle");
-
-
 
     if(isset($_POST['gestion_produit'])){
 
@@ -22,11 +18,11 @@ $result = $pdo->query("SELECT * FROM salle");
         $date_depart = $_POST['date_depart'];
         validateDate($date_depart);
 
-        if(is_numeric($_POST['salle']) && $_POST['salle'] != 0){
+        if(!is_numeric($_POST['salle']) && $_POST['salle'] != 0){
             $contenu .= '<p>Pas bon</p>';
         }
 
-        if(is_numeric($_POST['prix'])){
+        if(!is_numeric($_POST['prix'])){
             $contenu .= '<p>Toujours pas bon</p>';
         }
 
@@ -50,6 +46,8 @@ require_once('inc/header.php');
 ?>
 
 <section>
+
+<?php echo $contenu; ?>
     <form method="POST" action="">
         <label for="date_arrivee">Date d'arrivée</label>
         <i class="fa fa-envelope" aria-hidden="true"></i><input type="text" name="date_arrivee" value="" placeholder="jj/mm/aaaa 00:00">
