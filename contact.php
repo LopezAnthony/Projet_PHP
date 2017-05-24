@@ -1,30 +1,36 @@
 <?php 
 require_once('inc/init.inc.php');
 
-if(!adminConnected()){
-    header('location:/profil.php/');
-    exit();
-}
-
 $contenu = '';
 $contact = array('Demande de devis', 'Problème avec une réservation', 'Autre demande');
 
 // ---------  Traitement----------------
 
+if(!empty($_POST)){
+    if(strlen($_POST['nom']) <= 5){
+        $contenu .= '<p> Votre nom doit comporter au moins cinq caractères</p>';
+    }
 
+    if(strlen($_POST['prenom']) <= 5){
+        $contenu .= '<p>Votre prenom doit comporter au moins cinq caractères </p>';
+    }
 
+    if(!preg_match('#^[0-9]{10}$#', $_POST['telephone'])){
+        $contenu .= '<p>Téléphone invalide</p>';
+    }
 
+    if(filter_var($_POST['email'], FILTER_VALIDATE_EMAIL) && $_POST['email'] > 50){
+        $contenu .= '<p> L\'email est invalide </p>';
+    } 
 
+    if($_POST['contact'] != 'Demande de devis' && $_POST['contact'] != 'Problème avec une réservation' && $_POST['contact'] != 'Autre demande'){
+        $contenu .= '<p>Veuillez choisir un motif de contact valide</p>';
+    }
 
-
-
-
-
-
-
-
-
-
+    if(strlen($_POST['message']) <= 5){
+        $contenu .= '<p> Le champ message doit comporter au moins 5 caractères </p>';
+    }
+}
 
 // ----------- Affichage --------------
 require_once('inc/header.php');
@@ -36,9 +42,15 @@ require_once('inc/header.php');
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style>
+    p{
+        color:red;
+    }
+    </style>
     <title>Contact</title>
 </head>
 <body>
+    <?php echo $contenu; ?>
     <h1>Contactez-nous</h1>
     <form method="POST" action="">
 
