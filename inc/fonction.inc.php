@@ -52,7 +52,7 @@ function adminConnected(){
     }
 }
 
-function validateDate($date, $format = 'Y-m-d H:i:s')
+function validateDate($date, $format = 'Y-m-d H:i')
 {
     $d = DateTime::createFromFormat($format, $date);
     return $d && $d->format($format) == $date;

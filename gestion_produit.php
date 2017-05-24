@@ -2,7 +2,7 @@
     require_once('inc/init.inc.php');
 
     if(!adminConnected()){
-        header('location:/profil.php/');
+        header('location:/page_test.php/');
         exit();
     }
 
@@ -12,11 +12,20 @@ $result = $pdo->query("SELECT * FROM salle");
     if(isset($_POST['gestion_produit'])){
 
         $date_arrivee = $_POST['date_arrivee'];
-
-        validateDate($date_arrivee);
+        if(!validateDate($date_arrivee, $format = 'd/m/Y H:i')){
+            $contenu .= 'erreur date';
+        }else{
+            $dateArrivee = new DateTime($date_arrivee);
+            $date_arrivee = $dateArrivee->format('d-m-Y H:i');
+        }
 
         $date_depart = $_POST['date_depart'];
-        validateDate($date_depart);
+        if(!validateDate($date_depart, $format = 'd/m/Y H:i')){
+            $contenu .= 'erreur date';
+        }else{
+            $dateDepart = new DateTime($date_depart);
+            $date_depart = $dateDepart->format('d-m-Y H:i');
+        }
 
         if(!is_numeric($_POST['salle']) && $_POST['salle'] != 0){
             $contenu .= '<p>Pas bon</p>';
@@ -31,6 +40,7 @@ $result = $pdo->query("SELECT * FROM salle");
                 $_POST[$indice] = htmlspecialchars($valeur, ENT_QUOTES);
             }
 
+                
                 $result = $pdo->prepare("INSERT INTO produit (id_salle, date_arrivee, date_depart, prix ) VALUES (:id_salle, :date_arrivee, :date_depart, :prix )");
 
                 $result->bindParam(':id_salle', $_POST['salle'], PDO::PARAM_INT);
@@ -38,11 +48,15 @@ $result = $pdo->query("SELECT * FROM salle");
                 $result->bindParam(':date_depart', $date_depart, PDO::PARAM_STR);
                 $result->bindParam(':prix', $_POST['prix'], PDO::PARAM_INT);
 
+                $date_depart .= ':00';
+                $date_arrivee .= ':00';
+
                 $result->execute();
         }
     }
 //--------------------------------AFFICHAGE----------------------------------
 require_once('inc/header.php');
+echo $contenu;
 ?>
 
 <section>
