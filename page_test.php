@@ -3,7 +3,7 @@ require_once('inc/init.inc.php');
 //--------------------------TRAITEMENT-----------------------------
 $resultat = $pdo->query("SELECT * FROM salle");
 
-
+$produit = $pdo->query("SELECT produit.*, salle.* FROM produit INNER JOIN salle ON salle.id_salle = produit.id_salle WHERE produit.id_salle = salle.id_salle");
 
 //---------------------------AFFICHAGE-----------------------------
 require_once('inc/header.php');
@@ -38,7 +38,16 @@ require_once('inc/header.php');
 
     </section>
     <section>
-
+        <?php while($affichage = $produit->fetch(PDO::FETCH_ASSOC)){
+            echo '<figure>
+                    <figcaption>'. $affichage['titre'] .'</figcaption>
+                    <img src="'. $affichage['photo'] .'" alt="">
+                </figure>
+                <p>'. $affichage['description'] .'</p>
+                <p><i class="fa fa-calendar" aria-hidden="true"></i> '. $affichage['date_arrivee'] .' au '. $affichage['date_depart'] .'</p>
+                <p>prix : '. $affichage['prix'] .'</p>
+                <p><a href=""><i class="fa fa-search" aria-hidden="true"></i> Voir</a></p>';
+        } ?>
     </section>
 
 
