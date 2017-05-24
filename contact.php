@@ -7,23 +7,25 @@ $contact = array('Demande de devis', 'Problème avec une réservation', 'Autre d
 // ---------  Traitement----------------
 
 if(!empty($_POST)){
-    if(strlen($_POST['nom']) <= 5){
+    // dd($_POST);
+    if(strlen($_POST['nom']) < 5 || strlen($_POST['nom']) > 20 ){
         $contenu .= '<p> Votre nom doit comporter au moins cinq caractères</p>';
     }
 
-    if(strlen($_POST['prenom']) <= 5){
-        $contenu .= '<p>Votre prenom doit comporter au moins cinq caractères </p>';
+    if(strlen($_POST['prenom']) < 5 || strlen($_POST['prenom']) > 20 ){
+        $contenu .= '<p> Votre prénom doit comporter au moins cinq caractères</p>';
     }
 
     if(!preg_match('#^[0-9]{10}$#', $_POST['telephone'])){
         $contenu .= '<p>Téléphone invalide</p>';
     }
 
-    if(filter_var($_POST['email'], FILTER_VALIDATE_EMAIL) && $_POST['email'] > 50){
+
+    if(!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)){
         $contenu .= '<p> L\'email est invalide </p>';
     } 
 
-    if($_POST['contact'] != 'Demande de devis' && $_POST['contact'] != 'Problème avec une réservation' && $_POST['contact'] != 'Autre demande'){
+    if($_POST['contact'] == 'pas_bon'){
         $contenu .= '<p>Veuillez choisir un motif de contact valide</p>';
     }
 
@@ -37,6 +39,7 @@ require_once('inc/header.php');
 ?>
 
     <h1>Contactez-nous</h1>
+    <?php echo $contenu ?>
     <form method="POST" action="">
 
     <label for="nom"> Nom : </label>
@@ -53,7 +56,7 @@ require_once('inc/header.php');
 
     <label for="contact"> Motif du contact : </label>
         <select name="contact" id="contact">
-        <option value="">---Motif du contact---</option>
+        <option value="pas_bon">---Motif du contact---</option>
         <?php 
         foreach($contact as $indice => $valeur){
             echo "<option value=$valeur>$valeur</option>";

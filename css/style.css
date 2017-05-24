@@ -23,6 +23,7 @@ Style Reset
         color: grey;
     }
 
+
 /*
 Style Header
 */
@@ -33,34 +34,31 @@ Style Header
         margin: 2rem;
         padding: 1.5rem;
     }
-    /*li:nth-child(4) ul li{
-        display: block;
+
+    #une{
+        position: absolute; 
+        font: bold;
+        top: 0;
+        left: 0;
+        font: bold;
+        color: green;
     }
-    li{
-        display: block;
-        margin-left: 1rem;
+
+    header span li{
+        display: inline-block;
     }
-    li:first-of-type{
-        font-weight: bold;
-    }
-    li:last-of-type{
-        position: absolute;
-        right: 0;
-        margin-right: 4rem;
-    }*/
-    
+
     .fa{
         margin-right: .5rem;
     }
 
 
 /*
-Style Gestion
-*/
-
-/*
 Style footer
 */
+
+
+
 
 footer{
     background-color: lightgray;
