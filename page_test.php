@@ -3,6 +3,8 @@ require_once('inc/init.inc.php');
 //--------------------------TRAITEMENT-----------------------------
 $resultat = $pdo->query("SELECT * FROM salle");
 
+
+
 //---------------------------AFFICHAGE-----------------------------
 require_once('inc/header.php');
 ?>
@@ -27,9 +29,7 @@ require_once('inc/header.php');
             </select>
 
             <label for="prix">Prix</label>
-            <input type="range" id="range" name="prix" value="1000" min="0" max="2000" step="100">
 
-        
             <label for="date_arrivee">Date de arrivée</label>
             <input type="text" name="date_arrivee" id="date_arrivee" value="" placeholder="00/00/0000 00:00">
             <label for="date_depart">Date de départ</label>
