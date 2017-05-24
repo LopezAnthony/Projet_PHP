@@ -1,5 +1,6 @@
         </main>
         <footer>
+            <p><a href="#">Conditions générales de vente</a></p>
             <p>Copyright &copy SalleA 201</p>
         </footer>
 
