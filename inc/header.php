@@ -13,6 +13,7 @@
                 <ul>
                     <?php require_once('inc/inscription.php'); ?>
                     <?php require_once('inc/connexion.php'); ?>
+
                     <li><a href="page_test.php">SalleA</a></li>
                     <li><a href="">Qui sommes nous</a></li>
                     <li><a href="">Contact</a></li>

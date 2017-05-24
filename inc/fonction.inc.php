@@ -77,6 +77,5 @@ function executeRequete($req, $param = array()) {
     return $r;  
  
 } 
-?>
 
 

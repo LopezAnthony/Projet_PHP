@@ -33,12 +33,11 @@ Style Header
         margin: 2rem;
         padding: 1.5rem;
     }
-    li:nth-child(4) ul li{
+    /*li:nth-child(4) ul li{
         display: block;
-        /*display: none;*/
     }
     li{
-        display: inline-block;
+        display: block;
         margin-left: 1rem;
     }
     li:first-of-type{
@@ -48,7 +47,8 @@ Style Header
         position: absolute;
         right: 0;
         margin-right: 4rem;
-    }
+    }*/
+    
     .fa{
         margin-right: .5rem;
     }
