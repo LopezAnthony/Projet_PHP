@@ -16,7 +16,7 @@ $result = $pdo->query("SELECT * FROM salle");
             $contenu .= 'erreur date';
         }else{
             $dateArrivee = new DateTime($date_arrivee);
-            $date_arrivee = $dateArrivee->format('d-m-Y H:i');
+            $date_arrivee = $dateArrivee->format('Y-m-d H:i');
         }
 
         $date_depart = $_POST['date_depart'];
@@ -24,7 +24,7 @@ $result = $pdo->query("SELECT * FROM salle");
             $contenu .= 'erreur date';
         }else{
             $dateDepart = new DateTime($date_depart);
-            $date_depart = $dateDepart->format('d-m-Y H:i');
+            $date_depart = $dateDepart->format('Y-m-d H:i');
         }
 
         if(!is_numeric($_POST['salle']) && $_POST['salle'] != 0){
@@ -39,7 +39,7 @@ $result = $pdo->query("SELECT * FROM salle");
             foreach($_POST as $indice => $valeur){
                 $_POST[$indice] = htmlspecialchars($valeur, ENT_QUOTES);
             }
-
+            // ici ok
                 
                 $result = $pdo->prepare("INSERT INTO produit (id_salle, date_arrivee, date_depart, prix ) VALUES (:id_salle, :date_arrivee, :date_depart, :prix )");
 
@@ -47,9 +47,6 @@ $result = $pdo->query("SELECT * FROM salle");
                 $result->bindParam(':date_arrivee', $date_arrivee, PDO::PARAM_STR);
                 $result->bindParam(':date_depart', $date_depart, PDO::PARAM_STR);
                 $result->bindParam(':prix', $_POST['prix'], PDO::PARAM_INT);
-
-                $date_depart .= ':00';
-                $date_arrivee .= ':00';
 
                 $result->execute();
         }

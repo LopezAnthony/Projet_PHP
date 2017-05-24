@@ -7,7 +7,7 @@
     }
 
 //-------------------------------TRAITEMENT----------------------------------
-$commande = $pdo->query("SELECT id_commande, id_membre, id_produit, date_enregistrement, prix, email FROM membre m INNER JOIN commande c ON m.id_membre = c.id_membre INNER JOIN produit p ON c.id_produit = p.id_produit");
+// $commande = $pdo->query("SELECT id_commande, id_membre, id_produit, date_enregistrement, prix, email FROM membre m INNER JOIN commande c ON m.id_membre = c.id_membre INNER JOIN produit p ON c.id_produit = p.id_produit");
 
 $contenu .= '<h1>Gestion des commandes</h1>
 			<table border="1">';
@@ -17,7 +17,8 @@ $contenu .= '<h1>Gestion des commandes</h1>
 						<th>id produit</th>
 						<th>prix</th>
 						<th>date_enregistrement</th>
-					</tr>';
+					</tr>
+			</table>';
 // while($afficheCommande = $commande->fetch(PDO::FETCH_ASSOC)){
 //     $contenu .= '<tr>
 //                     <td>'. $afficheCommande['id_commande'] .'</td>
