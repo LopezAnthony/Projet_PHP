@@ -13,11 +13,12 @@
                 <ul>
                     <?php require_once('inc/inscription.php'); ?>
                     <?php require_once('inc/connexion.php'); ?>
-
-                    <li><a href="page_test.php">SalleA</a></li>
+                    <span>
+                    <li id="une"><a href="page_test.php">SalleA</a></li>
                     <li><a href="about.php">Qui sommes nous</a></li>
                     <li><a href="contact.php">Contact</a></li>
                     <li><a href=""><i class="fa fa-user" aria-hidden="true"></i>Espace Membre</a>
+                    </span>
                         <ul>
                             <?php if(!userConnected()) : ?>
                             
