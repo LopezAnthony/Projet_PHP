@@ -6,13 +6,8 @@
         exit();
     }
 
-
-
 //-------------------------------TRAITEMENT----------------------------------
 $result = $pdo->query("SELECT * FROM salle");
-
-// 2017-05-01 08:06:25
-// 01-12-1991 12:12
 
     if(isset($_POST['gestion_produit'])){
 
@@ -65,6 +60,8 @@ echo $contenu;
 ?>
 
 <section>
+
+<?php echo $contenu; ?>
     <form method="POST" action="">
         <label for="date_arrivee">Date d'arrivée</label>
         <i class="fa fa-envelope" aria-hidden="true"></i><input type="text" name="date_arrivee" value="" placeholder="jj/mm/aaaa 00:00">
