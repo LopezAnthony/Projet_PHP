@@ -7,6 +7,7 @@ require_once('inc/init.inc.php');
     if(isset($_GET['action']) && $_GET['action'] == 'deconnexion'){
         //si l'internaute demande la déconnexion, on détruit la session :
         unset($_SESSION['membre']);
+        header('location:page_test.php');
     }
 
     //Traitement du formulaire de connexion, et remplissage de la session:
@@ -49,7 +50,7 @@ require_once('inc/init.inc.php');
 
 //---------------------------AFFICHAGE-----------------------------
 
-    ?>
+?>
     <section class="modal2 hidden">
     <article>
         <h3>Connexion <i class="fa fa-times" aria-hidden="true"></i></h3>

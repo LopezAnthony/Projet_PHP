@@ -35,33 +35,9 @@ $contenu .= '<h1>Gestion des commandes</h1>
 // }
 
 
-
-
-
-
-
-
-
-
 //--------------------------------AFFICHAGE----------------------------------
 require_once('inc/header.php');
-?>
 
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Gestion des commandes</title>
-</head>
-<body>
-    <?php echo $contenu; ?>
-</body>
-</html>
+echo $contenu;
 
-
-
-<?php
-    require_once('inc/footer.php');
-?>
+require_once('inc/footer.php');

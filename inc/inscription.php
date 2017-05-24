@@ -70,7 +70,7 @@
 //-------------------AFFICHAGE----------------------
 
 
-    ?>
+?>
     <section class="modal hidden">
         <article>
             <h3>Inscription <i class="fa fa-times" aria-hidden="true"></i></h3>

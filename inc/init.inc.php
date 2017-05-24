@@ -12,8 +12,5 @@
     $contenu ='';
 
     //pour les fonctions
-    require_once('inscription.php');
-    require_once('connexion.php');
     require_once('fonction.inc.php');
 
-?>
